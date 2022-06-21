@@ -21,7 +21,22 @@ function App() {
             >
                 Get employees
             </button>
-            <button>Add</button>
+            <button onClick={() => {
+                let newData = new FormData() ;
+                newData.set("userId","11");
+                newData.set("id","101");
+                newData.set("title","test title");
+                newData.set("body","test body");
+                const promise = axios({
+                    method: 'post',
+                    url: 'https://jsonplaceholder.typicode.com/posts',
+                    data: newData
+                }).then((response) => {
+                    console.log(response)
+                }).catch((error) => {
+                    console.log(error);
+                })
+            }}>Add</button>
             <button>Update</button>
             {result.length > 0 && (
                 <table>
